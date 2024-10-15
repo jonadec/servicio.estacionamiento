@@ -7,42 +7,20 @@ import java.util.List;
 @Entity
 @Table(name = "estacionamiento")
 public class EstacionamientoModel {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE)
-    // @SequenceGenerator(name = "estacionamiento_seq", sequenceName = "estacionamiento_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "estacionamiento_seq")
+    @Column(name = "estacionamiento_id")
     private Long id;
-
     private String nombre;
     private String direccion;
-
     @OneToMany(mappedBy = "estacionamiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     // @JsonManagedReference
     private List<EspacioModel> espacios;
-
     @OneToMany(mappedBy = "estacionamiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
     // @JsonManagedReference
     private List<TicketModel> tickets;
 
-    // Constructores
-
-    public EstacionamientoModel() {
-    }
-
-    public EstacionamientoModel(String nombre, String direccion) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-    }
-
-    public EstacionamientoModel(String nombre, String direccion, List<EspacioModel> espacios, List<TicketModel> tickets) {
-        this.nombre = nombre;
-        this.direccion = direccion;
-        this.espacios = espacios;
-        this.tickets = tickets;
-    }
-
-    // Getters y Setters
-
+    
     public Long getId() {
         return id;
     }

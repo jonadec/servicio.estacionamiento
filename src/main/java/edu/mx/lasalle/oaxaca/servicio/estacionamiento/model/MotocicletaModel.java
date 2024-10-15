@@ -6,11 +6,11 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "motocicleta")
 public class MotocicletaModel extends VehiculoModel {
-
     private boolean tieneCasco;
 
     // Getters y Setters
 
+    
     public boolean isTieneCasco() {
         return tieneCasco;
     }

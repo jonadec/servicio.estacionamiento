@@ -34,7 +34,7 @@ public class EspacioServiceImplements implements EspacioService {
     @Override
     public void actualizarDatosEspacio(EspacioModel espacioModel, Long id) {
         if (espacioRepository.existsById(id)) {
-            espacioModel.setId(id);
+            espacioModel.setIdEspacio(id);
             espacioRepository.save(espacioModel);
         }
     }

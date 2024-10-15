@@ -7,14 +7,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 /**
  *
@@ -27,20 +20,17 @@ public class EstacionamientoController {
     @Autowired
     private EstacionamientoService estacionamientoService;
 
-    // @PostMapping("/registro")
-    // public CustomResponse registrarEstacionamiento(@RequestBody EstacionamientoModel estacionamientoModel) {
-    //     CustomResponse customResponse = new CustomResponse();
-    //     estacionamientoService.registrarEstacionamiento(estacionamientoModel);
-    //     customResponse.setHttpCode(HttpStatus.CREATED);
-    //     customResponse.setCode(201);
-    //     customResponse.setMessage("ESTACIONAMIENTO REGISTRADO EXITOSAMENTE");
-    //     return customResponse;
-    // }
+     @PostMapping("/registro")
+     public CustomResponse registrarEstacionamiento(@RequestBody EstacionamientoModel estacionamientoModel) {
+        CustomResponse customResponse = new CustomResponse();
+        estacionamientoService.registrarEstacionamiento(estacionamientoModel);
+        customResponse.setHttpCode(HttpStatus.CREATED);
+        customResponse.setCode(201);
+        customResponse.setMessage("ESTACIONAMIENTO REGISTRADO EXITOSAMENTE");
+        return customResponse;
+     }
 
-    @PostMapping("/registro")
-    public ResponseEntity<?> save(@RequestBody EstacionamientoModel estacionamientoModel) {
-       return ResponseEntity.status(HttpStatus.CREATED).body(estacionamientoService.save(estacionamientoModel)); 
-    }
+
 
     @GetMapping("/registros")
     public ResponseEntity<List<EstacionamientoModel>> getAllEstacionamientos() {
@@ -52,7 +42,7 @@ public class EstacionamientoController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Object> getEstacionamiento(@PathVariable Long id) {
+    public ResponseEntity<Object> getEstacionamiento(@PathVariable long id) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(
                 new CustomResponse(HttpStatus.OK,
@@ -73,7 +63,7 @@ public class EstacionamientoController {
     @PutMapping("/{id}/actualizar")
     public ResponseEntity<Object> updateEstacionamiento(
             @RequestBody EstacionamientoModel estacionamientoModel,
-            @PathVariable(value = "id") Long id) {
+            @PathVariable(value = "id") long id) {
         ResponseEntity<Object> responseEntity = null;
         CustomResponse customResponse = new CustomResponse();
 
@@ -100,7 +90,7 @@ public class EstacionamientoController {
     }
 
     @DeleteMapping("/{id}/borrar")
-    public ResponseEntity<Object> deleteEstacionamiento(@PathVariable Long id) {
+    public ResponseEntity<Object> deleteEstacionamiento(@PathVariable long id) {
         CustomResponse customResponse = new CustomResponse();
         try {
             estacionamientoService.borrarEstacionamiento(id);

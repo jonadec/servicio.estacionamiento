@@ -9,11 +9,9 @@ import jakarta.persistence.Table;
 @Entity
 @Table(name = "persona")
 public class PersonaModel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "persona_seq")
     private Long idPersona;
-
     private String nombre;
     private String telefono;
 

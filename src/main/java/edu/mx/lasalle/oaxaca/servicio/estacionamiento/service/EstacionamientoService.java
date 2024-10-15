@@ -12,7 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public interface EstacionamientoService {
     public void registrarEstacionamiento(EstacionamientoModel estacionamientoModel);
-    public EstacionamientoModel save(EstacionamientoModel estacionamientoModel);
     public List<EstacionamientoModel> obtenerEstacionamientos();
     public EstacionamientoModel getEstacionamiento(Long id);
     public void actualizarDatosEstacionamiento(EstacionamientoModel estacionamientoModel, Long id);

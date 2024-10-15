@@ -1,26 +1,25 @@
 package edu.mx.lasalle.oaxaca.servicio.estacionamiento.model;
 
 import jakarta.persistence.*;
+
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 @Entity
-@Table(name = "vehiculo")
+@Table(name = "Vehiculo")
 @Inheritance(strategy = InheritanceType.JOINED)
+@DiscriminatorColumn(name = "dtype", discriminatorType = DiscriminatorType.STRING)
 public class VehiculoModel {
-
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "vehiculo_seq")
     @SequenceGenerator(name = "vehiculo_seq", sequenceName = "vehiculo_seq", allocationSize = 1)
     private Long idVehiculo;
-
     private String placa;
     private String tipo;
     private String color;
-    
-
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "conductor_id", referencedColumnName = "idPersona")
-    @JsonManagedReference
+    @JsonIgnore
     private PersonaModel conductor;
 
     // Getters y Setters

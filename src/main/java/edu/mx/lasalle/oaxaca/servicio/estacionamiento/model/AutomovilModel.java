@@ -1,13 +1,15 @@
 package edu.mx.lasalle.oaxaca.servicio.estacionamiento.model;
+import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
 @Entity
+@DiscriminatorValue("automovil")
 @Table(name = "automovil")
 public class AutomovilModel extends VehiculoModel {
-
     private int numeroPuertas;
 
     // Getters y Setters
+    
 
     public int getNumeroPuertas() {
         return numeroPuertas;
@@ -16,8 +18,9 @@ public class AutomovilModel extends VehiculoModel {
     public void setNumeroPuertas(int numeroPuertas) {
         this.numeroPuertas = numeroPuertas;
     }
-    
-    
+
+
+
 
     @Override
     public String toString() {

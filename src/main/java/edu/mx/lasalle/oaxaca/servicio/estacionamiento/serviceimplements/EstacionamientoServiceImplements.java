@@ -34,7 +34,7 @@ public class EstacionamientoServiceImplements implements EstacionamientoService 
 
     @Override
     public void actualizarDatosEstacionamiento(EstacionamientoModel estacionamientoModel, Long id) {
-        estacionamientoModel.setId(id);; 
+        estacionamientoModel.setId(id);
         estacionamientoRepository.save(estacionamientoModel);
     }
 
@@ -48,9 +48,5 @@ public class EstacionamientoServiceImplements implements EstacionamientoService 
         estacionamientoRepository.deleteAll();
     }
 
-    @Override
-    public EstacionamientoModel save(EstacionamientoModel estacionamientoModel) {
-        return estacionamientoRepository.save(estacionamientoModel);
-    }
 }
 
