@@ -10,7 +10,7 @@ import jakarta.persistence.Table;
 @Table(name = "tarifa")
 public class TarifaModel {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "tarifa_seq")
+    @GeneratedValue(strategy = GenerationType.SEQUENCE)
     private Long idTarifa;
     private double costoHoraAutomovil;
     private double costoHoraMotocicleta;

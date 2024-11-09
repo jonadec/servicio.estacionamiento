@@ -19,6 +19,9 @@ public class AutomovilModel extends VehiculoModel {
         this.numeroPuertas = numeroPuertas;
     }
 
+    public AutomovilModel(){
+        super();
+    }
 
 
 
@@ -30,7 +33,7 @@ public class AutomovilModel extends VehiculoModel {
                 ", tipo='" + getTipo() + '\'' +
                 ", color='" + getColor() + '\'' +
                 ", conductor=" + getConductor() +
-                '}';
+                '}' + super.toString();
     }
 
     @Override

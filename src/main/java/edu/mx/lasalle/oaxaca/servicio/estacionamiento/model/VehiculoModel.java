@@ -1,9 +1,8 @@
 package edu.mx.lasalle.oaxaca.servicio.estacionamiento.model;
 
-import jakarta.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import jakarta.persistence.*;
 
 @Entity
 @Table(name = "Vehiculo")
@@ -16,13 +15,28 @@ public class VehiculoModel {
     private Long idVehiculo;
     private String placa;
     private String tipo;
+    private String modelo;
     private String color;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "conductor_id", referencedColumnName = "idPersona")
-    @JsonIgnore
+
+    @OneToOne(mappedBy = "vehiculoModel",cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private PersonaModel conductor;
 
-    // Getters y Setters
+    @OneToOne
+    @JoinColumn(name = "idTicket")
+    @JsonBackReference
+    private TicketModel ticketModel;
+
+    public VehiculoModel(Long idVehiculo, String placa, String tipo, String color,String modelo, PersonaModel conductor) {
+        this.idVehiculo = idVehiculo;
+        this.placa = placa;
+        this.tipo = tipo;
+        this.color = color;
+        this.conductor = conductor;
+        this.modelo = modelo;
+    }
+    public VehiculoModel() {
+    }
 
     public Long getIdVehiculo() {
         return idVehiculo;
@@ -63,6 +77,13 @@ public class VehiculoModel {
     public void setConductor(PersonaModel conductor) {
         this.conductor = conductor;
     }
+    public String getModelo() {
+        return modelo;
+    }
+
+    public void setModelo(String modelo) {
+        this.modelo = modelo;
+    }
 
     @Override
     public String toString() {
@@ -74,4 +95,5 @@ public class VehiculoModel {
                 ", conductor=" + conductor +
                 '}';
     }
+
 }

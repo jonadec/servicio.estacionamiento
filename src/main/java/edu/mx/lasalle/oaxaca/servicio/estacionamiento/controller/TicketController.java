@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:4200")
 @RequestMapping("/api/v1/ticket")
 public class TicketController {
 
@@ -19,6 +20,10 @@ public class TicketController {
     @PostMapping("/registro")
     public CustomResponse registrarTicket(@RequestBody TicketModel ticketModel) {
         CustomResponse customResponse = new CustomResponse();
+        //vehiculoService.registrarVehiculo(ticketModel.getVehiculo());
+        //List<VehiculoModel> vehiculos = vehiculoService.obtenerVehiculos();
+        //VehicleModel vehicle = vehiculos.get(vehiculos.size() - 1);
+        ticketModel.setVehiculo(ticketModel.getVehiculo());
         ticketService.registrarTicket(ticketModel);
         customResponse.setHttpCode(HttpStatus.CREATED);
         customResponse.setCode(201);

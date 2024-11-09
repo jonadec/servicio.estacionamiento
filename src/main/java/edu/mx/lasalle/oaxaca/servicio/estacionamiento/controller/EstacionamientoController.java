@@ -20,15 +20,15 @@ public class EstacionamientoController {
     @Autowired
     private EstacionamientoService estacionamientoService;
 
-     @PostMapping("/registro")
-     public CustomResponse registrarEstacionamiento(@RequestBody EstacionamientoModel estacionamientoModel) {
+    @PostMapping("/registro")
+    public CustomResponse registrarEstacionamiento(@RequestBody EstacionamientoModel estacionamientoModel) {
         CustomResponse customResponse = new CustomResponse();
         estacionamientoService.registrarEstacionamiento(estacionamientoModel);
         customResponse.setHttpCode(HttpStatus.CREATED);
         customResponse.setCode(201);
         customResponse.setMessage("ESTACIONAMIENTO REGISTRADO EXITOSAMENTE");
         return customResponse;
-     }
+            }
 
 
 

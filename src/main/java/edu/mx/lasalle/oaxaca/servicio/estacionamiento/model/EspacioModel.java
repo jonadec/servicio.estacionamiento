@@ -1,9 +1,10 @@
 package edu.mx.lasalle.oaxaca.servicio.estacionamiento.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import jakarta.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
 
 @Entity
 @Table(name = "espacios")
@@ -15,9 +16,10 @@ public class EspacioModel {
     private String numero;
     private String tipo; 
     private boolean disponible;
-    @ManyToOne(fetch = FetchType.LAZY)
+
+    @ManyToOne
     @JoinColumn(name = "estacionamiento_id")
-    @JsonIgnore
+    @JsonBackReference
     private EstacionamientoModel estacionamiento;
 
     // Constructores

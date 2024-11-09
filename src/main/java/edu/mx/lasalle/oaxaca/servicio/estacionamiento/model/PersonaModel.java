@@ -1,21 +1,23 @@
 package edu.mx.lasalle.oaxaca.servicio.estacionamiento.model;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 
 @Entity
 @Table(name = "persona")
 public class PersonaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "persona_seq")
+    @Column(name = "idPersona")
     private Long idPersona;
     private String nombre;
     private String telefono;
+    
+    @OneToOne
+    @JoinColumn(name = "idVehiculo")
+    @JsonBackReference
+    private VehiculoModel vehiculoModel;
 
-    // Getters y Setters
 
     public Long getIdPersona() {
         return idPersona;

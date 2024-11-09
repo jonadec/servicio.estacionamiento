@@ -3,6 +3,8 @@ package edu.mx.lasalle.oaxaca.servicio.estacionamiento.model;
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name = "ticket")
 public class TicketModel {
@@ -12,20 +14,22 @@ public class TicketModel {
     private Long idTicket;
     private LocalDateTime entrada;
     private LocalDateTime salida;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "vehiculo_id", referencedColumnName = "idVehiculo")
+
+    @OneToOne(mappedBy = "ticketModel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private VehiculoModel vehiculo;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "espacio_id", referencedColumnName = "idEspacio")
+
+    @ManyToOne
+    @JoinColumn(name="idEspacio")
     private EspacioModel espacio;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "tarifa_id", referencedColumnName = "idTarifa")
+
+    @ManyToOne
+    @JoinColumn(name ="idTarifa")
     private TarifaModel tarifa;
+
     @ManyToOne 
     @JoinColumn(name = "estacionamiento_id") 
     private EstacionamientoModel estacionamiento;
-
-    // Getters y Setters
 
     public Long getIdTicket() {
         return idTicket;

@@ -3,6 +3,8 @@ package edu.mx.lasalle.oaxaca.servicio.estacionamiento.model;
 import jakarta.persistence.*;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "estacionamiento")
@@ -13,11 +15,11 @@ public class EstacionamientoModel {
     private Long id;
     private String nombre;
     private String direccion;
-    @OneToMany(mappedBy = "estacionamiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    // @JsonManagedReference
+    @OneToMany(mappedBy = "estacionamiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JsonManagedReference
     private List<EspacioModel> espacios;
-    @OneToMany(mappedBy = "estacionamiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY, orphanRemoval = true)
-    // @JsonManagedReference
+    
+    @OneToMany(mappedBy = "estacionamiento", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<TicketModel> tickets;
 
     
