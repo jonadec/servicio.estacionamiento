@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
  * Controlador para la entidad Tarifa
  */
 @RestController
-@CrossOrigin(origins = "http://localhost:4200") // Permitir peticiones desde el frontend
+@CrossOrigin(origins = "*") // Permitir peticiones desde el frontend
 @RequestMapping("/api/v1/tarifa")
 public class TarifaController {
 

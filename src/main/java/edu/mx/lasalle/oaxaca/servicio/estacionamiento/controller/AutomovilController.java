@@ -14,6 +14,7 @@ import java.util.List;
  * Controlador para manejar las operaciones de Automovil
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/automovil")
 public class AutomovilController {
 

@@ -14,6 +14,7 @@ import java.util.List;
  * Controlador para gestionar las operaciones relacionadas con los vehículos.
  */
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/api/v1/vehiculo")
 public class VehiculoController {
 

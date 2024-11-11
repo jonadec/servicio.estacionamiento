@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/api/v1/estacionamiento")
+@CrossOrigin(origins = "*")
 public class EstacionamientoController {
     @Autowired
     private EstacionamientoService estacionamientoService;
