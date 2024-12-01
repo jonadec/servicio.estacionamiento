@@ -8,7 +8,7 @@ WORKDIR /app
 COPY target/mi-aplicacion-0.0.1-SNAPSHOT.jar app.jar
 
 # Expone el puerto 8080 para que la aplicación sea accesible
-EXPOSE 8080
+EXPOSE 8081
 
 # Ejecuta el archivo JAR cuando se inicie el contenedor
 CMD ["java", "-jar", "app.jar"]
