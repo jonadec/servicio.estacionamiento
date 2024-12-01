@@ -14,7 +14,11 @@ public class TicketModel {
     private Long idTicket;
     private LocalDateTime entrada;
     private LocalDateTime salida;
+    @Column(name = "costo_total")
+    private Double costoTotal;
+
     
+
     @OneToOne(mappedBy = "ticketModel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private VehiculoModel vehiculo;
@@ -30,6 +34,13 @@ public class TicketModel {
     @ManyToOne 
     @JoinColumn(name = "estacionamiento_id") 
     private EstacionamientoModel estacionamiento;
+    public Double getCostoTotal() {
+        return costoTotal;
+    }
+
+    public void setCostoTotal(Double costoTotal) {
+        this.costoTotal = costoTotal;
+}
 
     public Long getIdTicket() {
         return idTicket;
@@ -90,6 +101,7 @@ public class TicketModel {
                 ", vehiculo=" + vehiculo +
                 ", espacio=" + espacio +
                 ", tarifa=" + tarifa +
+                ", costoTotal=" + costoTotal +
                 '}';
     }
 }
