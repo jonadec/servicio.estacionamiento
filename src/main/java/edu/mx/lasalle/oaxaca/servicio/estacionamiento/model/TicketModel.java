@@ -14,7 +14,7 @@ public class TicketModel {
     private Long idTicket;
     private LocalDateTime entrada;
     private LocalDateTime salida;
-
+    
     @OneToOne(mappedBy = "ticketModel", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JsonManagedReference
     private VehiculoModel vehiculo;
@@ -78,6 +78,8 @@ public class TicketModel {
     public void setTarifa(TarifaModel tarifa) {
         this.tarifa = tarifa;
     }
+    
+
 
     @Override
     public String toString() {
