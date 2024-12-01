@@ -7,7 +7,7 @@ WORKDIR /app
 # Copia el archivo JAR generado por Maven al contenedor
 COPY target/mi-aplicacion-0.0.1-SNAPSHOT.jar app.jar
 
-# Expone el puerto 8080 para que la aplicación sea accesible
+# Expone el puerto 8081 para que la aplicación sea accesible
 EXPOSE 8081
 
 # Ejecuta el archivo JAR cuando se inicie el contenedor
